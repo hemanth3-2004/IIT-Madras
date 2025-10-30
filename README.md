@@ -1,4 +1,4 @@
-**Question 3.** **- Transliteration**
+**Question 3** - **Transliteration**
    
 `Training Details`
 The model was trained on a representative subset of the complete dataset to ensure computational stability and avoid runtime interruptions during training. This setup was designed to demonstrate the model’s architecture and performance within the available compute limits.
