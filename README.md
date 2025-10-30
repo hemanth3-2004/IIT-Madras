@@ -1,3 +1,7 @@
+**Question 1** - **Imaging Science**
+
+**Question 2** - **Computer Vision**
+
 **Question 3** - **Transliteration**
    
 `Training Details`
