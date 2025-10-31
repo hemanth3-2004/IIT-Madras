@@ -18,4 +18,4 @@ The model was trained on a representative subset of the complete dataset to ensu
  - Early Stopping: An early stopping mechanism was implemented with `restore_best_weights=True` to automatically retain the most optimal model weights based on validation performance.
  - Model Saving Strategy: After each epoch, only the best-performing model (lowest validation loss) is saved as `conditioned_seq2seq_models/best_conditioned_seq2seq.h5` Older checkpoints are automatically removed to maintain a clean directory and conserve storage space.
 
-**Note:** Although I initially intended to train the model for more epochs to achieve higher accuracy, GPU runtime limitations restricted extended training.
+**Note:** Although I initially intended to train the model for more epochs to achieve higher accuracy, GPU runtime limitations restricted extended training. Based on the last epoch the accuracy achieved was around 95% as well as training loss was properly achieved. Output of the same log is uploaded in the Folder named "Output" and a sample test data output (For remaining test data we can use high-end GPU availability and batch process it for output).
