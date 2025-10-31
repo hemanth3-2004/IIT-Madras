@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from math import ceil
 from tkinter import Tk, filedialog
 import os
-
-os.environ["QT_LOGGING_RULES"] = "qt.qpa.fonts.debug=false"   # Prevent GUI logs
+  
+os.environ["QT_LOGGING_RULES"] = "qt.qpa.fonts.debug=false"   
 
 # Load the  image
 def choose_image():
@@ -59,7 +59,7 @@ def recover_reflectance_gray(img, sigma=15.0, eps=1e-6):   # --- Reflectance Rec
 
 
 
-def recover_reflectance_color(img, sigma=15.0): # --- Color Extension ---
+def recover_reflectance_color(img, sigma=15.0): 
     bgr = img.astype(np.float32)
     intensity = bgr.mean(axis=2)
     Rgray, logL, logR, _ = recover_reflectance_gray(intensity, sigma)
@@ -92,9 +92,9 @@ if __name__ == "__main__":
     try:
         path = choose_image()
         if path == "":
-            path = r"C:\Users\Sirisha\OneDrive\Desktop - Copy\Desktop\IIT\wall.jpg"
+            path = r"C:\Users\OneDrive\Desktop - Copy\Desktop\IIT\wall.jpg"
     except:
-        path = r"C:\Users\Sirisha\OneDrive\Desktop - Copy\Desktop\IIT\wall.jpg"
+        path = r"C:\Users\OneDrive\Desktop - Copy\Desktop\IIT\wall.jpg"
     img = imread_any(path)
     base = os.path.splitext(os.path.basename(path))[0]
     out_dir = f"results_{base}"
@@ -103,10 +103,10 @@ if __name__ == "__main__":
     print(f"\nProcessing: {path}")
     print(f"Results will be saved to: {out_dir}\n")
 
-    if img.ndim == 2:                           # --- GRAYSCALE ---
+    if img.ndim == 2:                           # --- Grayscale Image---
         Rimg, logL, logR, logI = recover_reflectance_gray(img, sigma=20)
 
-        save_image(os.path.join(out_dir, "original_gray.png"), img)                           # Save intermediate results
+        save_image(os.path.join(out_dir, "original_gray.png"), img)                           # Save the intermediate results
         save_image(os.path.join(out_dir, "logI.png"), (255*(logI - logI.min())/(logI.max()-logI.min())).astype(np.uint8))
         save_image(os.path.join(out_dir, "logL.png"), (255*(logL - logL.min())/(logL.max()-logL.min())).astype(np.uint8))
         save_image(os.path.join(out_dir, "logR.png"), (255*(logR - logR.min())/(logR.max()-logR.min())).astype(np.uint8))
@@ -121,7 +121,7 @@ if __name__ == "__main__":
         print(" - Recovered_R.png (main output)")
         print(" - hist_original.png, hist_recovered.png\n")
 
-    else:                                                      # --- COLOR ---
+    else:                                                      
         out, Rgray, logL, logR = recover_reflectance_color(img, sigma=20)
 
         save_image(os.path.join(out_dir, "original_color.png"), img)
@@ -140,4 +140,4 @@ if __name__ == "__main__":
         print(" - logL_gray.png, logR_gray.png")
         print(" - hist_Rgray.png, hist_green_channel.png\n")
 
-    print("Process complete! Check your folder for results:", os.path.abspath(out_dir))
+    print("Check your folder for results:", os.path.abspath(out_dir))
