@@ -1,6 +1,11 @@
 **Question 1** - **Imaging Science**
 
 **Question 2** - **Computer Vision**
+This project estimates the camera intrinsic parameters and radial distortion coefficients from a single photograph of a checkerboard (rectangular grid) captured using an unknown camera. The input image may include perspective distortion, lighting variations, or mild noise.
+
+The workflow involves detecting the grid corners, formulating a robust cost function that minimizes the reprojection error between the detected points and model-predicted ones, and using non-linear least squares optimization (Huber loss) for stability. A RANSAC-based refinement step ensures that outliers are rejected, improving the robustness of the parameter estimation.
+
+Finally, the estimated camera intrinsics and distortion coefficients are used to undistort the image, producing a geometrically corrected version where straight lines appear straight again. The results include the detected corner visualization, undistorted image, and computed reprojection error, all saved in the output folder for analysis.
 
 **Question 3** - **Transliteration**
    
